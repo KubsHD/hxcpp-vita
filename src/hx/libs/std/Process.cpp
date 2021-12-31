@@ -189,7 +189,7 @@ static String quoteString(String v)
 **/
 Dynamic _hx_std_process_run( String cmd, Array<String> vargs, int inShowParam )
 {
-   #if defined(APPLETV) || defined(HX_APPLEWATCH)
+   #if defined(APPLETV) || defined(HX_APPLEWATCH) || defined(__SNC__) // todo: implement this
    return null();
 
    #else
@@ -457,6 +457,10 @@ void _hx_std_process_stdin_close( Dynamic handle )
 **/
 int _hx_std_process_exit( Dynamic handle )
 {
+#if defined(__SNC__)
+   return 0;
+#else
+
    vprocess *p = getProcess(handle);
 
    hx::EnterGCFreeZone();
@@ -484,6 +488,7 @@ int _hx_std_process_exit( Dynamic handle )
       return 0;
 
    return WEXITSTATUS(rval);
+   #endif
    #endif
 }
 

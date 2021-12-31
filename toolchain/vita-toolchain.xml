@@ -12,7 +12,7 @@
   <flag value="-Iinclude"/>
 
 
-  <cppflag value="-std=c++11"/>
+  <cppflag value="-std=c++11" if="HXCPP_CPP11"/>
 
   <ext value=".obj"/>
   <objdir value="obj/vita${OBJEXT}${ARCH}" />
@@ -36,7 +36,7 @@
 <linker id="exe" exe="${VITASDK}/bin/arm-vita-eabi-g++" >
   <exe name="${VITASDK}/bin/arm-vita-eabi-g++" />
 
-  <cppflag value="-std=c++11"/>
+  <cppflag value="-std=c++11" if="HXCPP_CPP11"/>
 
 
   <flag value="-L${VITASDK}/arm-vita-eabi/lib" />
@@ -52,13 +52,56 @@
 	<lib name="-lSceDisplay_stub"/>
 	<lib name="-lSceAppMgr_stub"/>
 	<lib name="-lSceSysmodule_stub"/>
-
+  <lib name="-lSDL2"/>
+	<lib name="-lc"/>
+	<lib name="-ljpeg"/>
+	<lib name="-lvorbis"/>
+	<lib name="-lvorbisfile"/>
+	<lib name="-logg"/>
+	<lib name="-lSceCtrl_stub"/>
+	<lib name="-lSceHid_stub"/>
+	<lib name="-lSceTouch_stub"/>
+	<lib name="-lSceAudio_stub"/>
+	<lib name="-lSceMotion_stub"/>
+	<lib name="-lSceGxm_stub"/>
+	<lib name="-lSceIme_stub"/>
+	<lib name="-lSceCommonDialog_stub"/>
+	<lib name="-lpng"/>
+	<lib name="-lz"/>
+	<lib name="-lpixman-1"/>
 
 
   <ext value=".elf"/>
   <outflag value="-o"/>
   <prefix value=""/>
 
+</linker>
+
+<linker id="dll" exe="${VITASDK}/bin/arm-vita-eabi-g++" >
+
+  <ext value=""/>
+  <outflag value="-o"/>
+  <prefix value=""/>
+
+  <flag value="-frtti"/>
+  <flag value="-nostdlib"/>
+  <flag value="-std=c++11" if="HXCPP_CPP11"/>
+  <flag value="-Wl,--no-undefined" unless="dll_import" />
+  <flag value="-Wl,--unresolved-symbols=ignore-in-object-files" if="dll_import" />
+  <flag value="-Wl,-z,noexecstack"/>
+  <flag value="-L${VITASDK}/arm-eabi-vita/lib"/>
+  <flag value="-L${VITASDK}/lib"/>
+
+  <lib name="-lpthread"/>
+  <lib name="-ldl"/>
+	<lib name="-ltaihen_stub"/>
+	<lib name="-lSceKernelModulemgr_stub"/>
+	<lib name="-lSceKernelThreadMgr_stub"/>
+	<lib name="-lSceDisplay_stub"/>
+	<lib name="-lSceAppMgr_stub"/>
+	<lib name="-lSceSysmodule_stub"/>
+
+  <lib name="-ldl"/>
 </linker>
 
 <linker id="static_link" exe="${VITASDK}/bin/arm-vita-eabi-ar" unless="windows">
