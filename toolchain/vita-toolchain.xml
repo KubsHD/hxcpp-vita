@@ -12,7 +12,7 @@
   <flag value="-Iinclude"/>
 
 
-  <cppflag value="-std=c++17"/>
+  <cppflag value="-std=c++11"/>
 
   <ext value=".obj"/>
   <objdir value="obj/vita${OBJEXT}${ARCH}" />
@@ -36,7 +36,7 @@
 <linker id="exe" exe="${VITASDK}/bin/arm-vita-eabi-g++" >
   <exe name="${VITASDK}/bin/arm-vita-eabi-g++" />
 
-  <cppflag value="-std=c++17"/>
+  <cppflag value="-std=c++11"/>
 
 
   <flag value="-L${VITASDK}/arm-vita-eabi/lib" />
