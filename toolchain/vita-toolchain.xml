@@ -67,8 +67,6 @@
   <exe name="${EXEPREFIX}-ar" if="EXEPREFIX" />
   <exe name="${HXCPP_AR}" if="HXCPP_AR" />
 
-  <flag value="-L${VITASDK}/arm-vita-eabi/lib" />
-  <flag value="-L${VITASDK}/lib" />
 
   <fromfile value="" if="GCC_OLD" />
   <fromfile value="" if="tizen" />
