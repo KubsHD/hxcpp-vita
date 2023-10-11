@@ -44,6 +44,7 @@
   <flag value="-Wl,-q"/>
   <flag value="-lstdc++"/>
   <flag value="-fpermissive"/>
+  
   <lib name="-lpthread"/>
   <lib name="-ldl"/>
 	<lib name="-ltaihen_stub"/>
@@ -56,6 +57,7 @@
 	<lib name="-lc"/>
 	<lib name="-ljpeg"/>
 	<lib name="-lvorbis"/>
+	<lib name="-lopenal"/>
 	<lib name="-lvorbisfile"/>
 	<lib name="-logg"/>
 	<lib name="-lSceCtrl_stub"/>
